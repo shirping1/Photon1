@@ -104,6 +104,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("规 积己 肯丰");
+        Debug.Log("规俊 立加窃");
+
+        PhotonNetwork.LoadLevel("InGame");
     }
 }
