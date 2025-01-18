@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviourPun
 
     Rigidbody2D rb;
 
+    [SerializeField]
     private float hp;
 
     private void Start()
@@ -69,10 +70,6 @@ public class PlayerController : MonoBehaviourPun
                 hp -= damage;
                 photonView.RPC("UpdateHp", RpcTarget.All, hp);
             }
-        }
-        else
-        {
-            photonView.RPC("GetDamage", RpcTarget.MasterClient, hp);
         }
     }
 

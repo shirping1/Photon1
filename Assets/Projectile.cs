@@ -21,7 +21,8 @@ public class Projectile : MonoBehaviourPun
         {
             collision.GetComponentInParent<PlayerController>().GetDamage(10f);
             
-            PhotonNetwork.Destroy(gameObject);
+            if(PhotonNetwork.IsMasterClient)
+                PhotonNetwork.Destroy(gameObject);
         }
 
     }
