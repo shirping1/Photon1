@@ -67,16 +67,19 @@ public class PlayerController : MonoBehaviourPun
             if (hp >= 0)
             {
                 hp -= damage;
-                photonView.RPC("UpdateHp", RpcTarget.Others, hp);
-                photonView.RPC("GetDamage", RpcTarget.Others, damage);
+                photonView.RPC("UpdateHp", RpcTarget.All, hp);
             }
         }
-        hpBar.fillAmount = hp / 100f;
+        else
+        {
+            photonView.RPC("GetDamage", RpcTarget.MasterClient, hp);
+        }
     }
 
     [PunRPC]
     public void UpdateHp(float newHp)
     {
         hp = newHp;
+        hpBar.fillAmount = hp / 100f;
     }
 }
