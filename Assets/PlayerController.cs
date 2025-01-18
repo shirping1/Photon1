@@ -47,9 +47,22 @@ public class PlayerController : MonoBehaviourPun
 
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject newBullet = PhotonNetwork.Instantiate(bulletPrefab.name, firePos.position, firePos.rotation);
-            StartCoroutine(DestoryObject(newBullet, 2f));
+            if (PhotonNetwork.IsMasterClient)
+            {
+                Shooting();
+            }
+            else
+            {
+                photonView.RPC("Shooting", RpcTarget.MasterClient);
+            }
         }
+    }
+
+    [PunRPC]
+    public void Shooting()
+    {
+        GameObject newBullet = PhotonNetwork.Instantiate(bulletPrefab.name, firePos.position, firePos.rotation);
+        StartCoroutine(DestoryObject(newBullet, 2f));
     }
 
     IEnumerator DestoryObject(GameObject target, float delay)
