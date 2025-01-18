@@ -20,9 +20,12 @@ public class Projectile : MonoBehaviourPun
         if (collision.CompareTag("Player"))
         {
             collision.GetComponentInParent<PlayerController>().GetDamage(10f);
-            
-            if(PhotonNetwork.IsMasterClient)
+
+            if (PhotonNetwork.IsMasterClient)
+            {
+                photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
                 PhotonNetwork.Destroy(gameObject);
+            }
         }
 
     }

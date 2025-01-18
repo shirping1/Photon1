@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 5766369114691374499}
   - component: {fileID: 5057755373828333758}
   - component: {fileID: 5936464183995397748}
+  - component: {fileID: 6842314326306373214}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -320,6 +321,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6842314326306373214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5135314738962211322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &6412855333358417052
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,6 +602,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 438707711370792377}
+  - {fileID: 6842314326306373214}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -631,3 +649,4 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2331669649033162948, guid: 36d993bd08923f742a3a74d2635e0ac3, type: 3}
   firePos: {fileID: 6942929918631063018}
   hpBar: {fileID: 659321305354010982}
+  hp: 0
