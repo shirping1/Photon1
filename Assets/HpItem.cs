@@ -14,7 +14,7 @@ public class HpItem : MonoBehaviourPun
     {
         if(collision.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerController>().HpUpdate(50f);
+            collision.GetComponentInParent<PlayerController>().HpUpdate(50f);
 
             if (photonView.IsMine)
             {
