@@ -69,18 +69,18 @@ public class PlayerController : MonoBehaviourPun
     {
         yield return new WaitForSeconds(delay);
 
-        if (tag != null)
+        if (target != null)
             PhotonNetwork.Destroy(target);
     }
 
     [PunRPC]
-    public void GetDamage(float damage)
+    public void HpUpdate(float damage)
     {
         if (PhotonNetwork.IsMasterClient)
         {
             if (hp >= 0)
             {
-                hp -= damage;
+                hp += damage;
                 photonView.RPC("UpdateHp", RpcTarget.All, hp);
             }
         }

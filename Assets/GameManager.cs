@@ -6,6 +6,7 @@ using Photon.Pun;
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public GameObject playerPrefab;
+    public GameObject item;
 
     public static GameManager instance;
 
@@ -24,11 +25,23 @@ public class GameManager : MonoBehaviourPunCallbacks
     void Start()
     {
         PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            StartCoroutine(SpawnItem(item, 5f));
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator SpawnItem(GameObject item, float delay)
     {
-
+        float x;
+        float y;
+        while (true)
+        {
+            yield return new WaitForSeconds(delay);
+            x = Random.Range(-10, 10);
+            y = Random.Range(-10, 10);
+            PhotonNetwork.Instantiate(item.name, new Vector3(x, y, 0), Quaternion.identity);
+        }
     }
 }
